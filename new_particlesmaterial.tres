@@ -1,0 +1,29 @@
+[gd_resource type="ParticlesMaterial" load_steps=3 format=2]
+
+[sub_resource type="Curve" id=10]
+bake_resolution = 20
+_data = [ Vector2( 0, 1 ), 0.0, 1.26548, 0, 0, Vector2( 0.702247, 0 ), 0.241422, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 28.0
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 1, 0 )
+initial_velocity = 0.1
+initial_velocity_random = 1.0
+angular_velocity = -71.88
+angular_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 0.75
+linear_accel_random = 1.0
+damping = 1.0
+angle = 2.0
+angle_random = 1.0
+scale = 1.5
+scale_random = 0.07
+scale_curve = SubResource( 11 )
