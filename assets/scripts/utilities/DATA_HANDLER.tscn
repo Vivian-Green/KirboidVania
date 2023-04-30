@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/scripts/utilities/save_settings.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/utilities/DATA_HANDLER.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/atkinson-regular.tres" type="DynamicFont" id=3]
+
+[node name="DATA_HANDLER" type="Node2D"]
+script = ExtResource( 2 )
+saveSettingsClass = ExtResource( 1 )
+overrideFont = ExtResource( 3 )

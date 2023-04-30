@@ -1,0 +1,96 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scripts/player.gd" type="Script" id=2]
+[ext_resource path="res://scenes/playerBody.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 32, 39.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 68, 32 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 34.25 )
+
+[node name="player" type="KinematicBody2D"]
+collision_mask = 14
+script = ExtResource( 2 )
+
+[node name="collisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -8.5 )
+z_index = 3
+shape = SubResource( 4 )
+
+[node name="upLeft" type="RayCast2D" parent="."]
+position = Vector2( -38, -36 )
+enabled = true
+cast_to = Vector2( 0, 34 )
+collision_mask = 2
+
+[node name="upRight" type="RayCast2D" parent="."]
+position = Vector2( 38, -36 )
+enabled = true
+cast_to = Vector2( 0, 34 )
+collision_mask = 2
+
+[node name="downLeft" type="RayCast2D" parent="."]
+position = Vector2( -38, -1 )
+enabled = true
+cast_to = Vector2( 0, 32 )
+collision_mask = 2
+
+[node name="downRight" type="RayCast2D" parent="."]
+position = Vector2( 38, -1 )
+enabled = true
+cast_to = Vector2( 0, 32 )
+collision_mask = 2
+
+[node name="left" type="RayCast2D" parent="."]
+position = Vector2( -30, 28 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2
+
+[node name="right" type="RayCast2D" parent="."]
+position = Vector2( 30, 28 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2
+
+[node name="down" type="RayCast2D" parent="."]
+position = Vector2( 0, 30 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+collision_mask = 2
+
+[node name="Inventory" type="Node2D" parent="."]
+
+[node name="pickupRange" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pickupRange"]
+shape = SubResource( 3 )
+
+[node name="damageDetector" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 16
+
+[node name="collisionShape2D" type="CollisionShape2D" parent="damageDetector"]
+position = Vector2( 0, -2.25 )
+shape = SubResource( 1 )
+
+[node name="cosmeticsLocations" type="Node2D" parent="."]
+
+[node name="feet" type="Node2D" parent="cosmeticsLocations"]
+position = Vector2( 0, 16 )
+
+[node name="body" parent="." instance=ExtResource( 3 )]
+position = Vector2( 4, 0 )
+scale = Vector2( 1, 1 )
+
+[connection signal="area_entered" from="pickupRange" to="." method="_on_pickupRange_area_entered"]
+[connection signal="area_entered" from="damageDetector" to="." method="onHurtboxCollision"]
+[connection signal="body_entered" from="damageDetector" to="." method="onHurtboxCollision"]

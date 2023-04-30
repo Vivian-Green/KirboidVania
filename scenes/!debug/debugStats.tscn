@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/!debug/debugStats.gd" type="Script" id=1]
+
+[node name="node2D" type="Node2D"]
+z_index = 99
+script = ExtResource( 1 )
+
+[node name="fps" type="RichTextLabel" parent="."]
+margin_top = 3.0
+margin_right = 133.0
+margin_bottom = 18.0
+rect_scale = Vector2( 2, 2 )
+size_flags_vertical = 0
+text = "fps"
+scroll_active = false
+
+[node name="frameTime" type="RichTextLabel" parent="."]
+margin_top = 36.0
+margin_right = 133.0
+margin_bottom = 51.0
+rect_scale = Vector2( 2, 2 )
+size_flags_vertical = 0
+text = "frame time"
+scroll_active = false
+
+[node name="playTime" type="RichTextLabel" parent="."]
+margin_top = 66.0
+margin_right = 133.0
+margin_bottom = 81.0
+rect_scale = Vector2( 2, 2 )
+size_flags_vertical = 0
+text = "play time
+"
+scroll_active = false

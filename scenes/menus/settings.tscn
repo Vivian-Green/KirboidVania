@@ -1,0 +1,220 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scripts/utilities/makeWindowDraggable.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/utilities/closeWindow.gd" type="Script" id=2]
+[ext_resource path="res://assets/fonts/hack 24pt.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/scripts/utilities/settingsScript.gd" type="Script" id=4]
+
+[sub_resource type="Theme" id=1]
+
+[node name="settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_top = -1.0
+margin_right = -781.0
+margin_bottom = -421.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 500.0
+margin_bottom = 1000.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.282353, 0.298039, 0.380392, 1 )
+script = ExtResource( 1 )
+
+[node name="close" type="Button" parent="ColorRect"]
+margin_left = 472.0
+margin_top = 8.0
+margin_right = 492.0
+margin_bottom = 28.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "x"
+script = ExtResource( 2 )
+
+[node name="settings" type="Control" parent="ColorRect"]
+margin_left = 10.0
+margin_top = 107.0
+margin_right = 490.0
+margin_bottom = 107.0
+
+[node name="title" type="Label" parent="ColorRect/settings"]
+margin_top = -87.0
+margin_right = 480.0
+margin_bottom = -73.0
+custom_fonts/font = ExtResource( 3 )
+text = "settings"
+align = 1
+
+[node name="graphicsSection" type="ColorRect" parent="ColorRect/settings"]
+margin_left = 10.0
+margin_top = -30.0
+margin_right = 470.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.247116, 0.256952, 0.308594, 1 )
+
+[node name="label" type="Label" parent="ColorRect/settings/graphicsSection"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 24.0
+text = "Grophycz"
+
+[node name="graphicsOptions" type="VBoxContainer" parent="ColorRect/settings/graphicsSection"]
+margin_left = 30.0
+margin_top = 40.0
+margin_right = 430.0
+margin_bottom = 190.0
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource( 1 )
+
+[node name="resolutionLabel" type="Label" parent="ColorRect/settings/graphicsSection/graphicsOptions"]
+margin_right = 400.0
+margin_bottom = 14.0
+text = "resolution:"
+
+[node name="resolution" type="VBoxContainer" parent="ColorRect/settings/graphicsSection/graphicsOptions"]
+margin_top = 18.0
+margin_right = 200.0
+margin_bottom = 102.0
+rect_min_size = Vector2( 0, 40 )
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme = SubResource( 1 )
+
+[node name="control" type="Control" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution"]
+margin_right = 200.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 200, 50 )
+
+[node name="screenHeight" type="HBoxContainer" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control"]
+margin_left = 20.0
+margin_right = 374.0
+margin_bottom = 20.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/screenHeight"]
+margin_right = 230.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 230, 20 )
+text = "screen height:"
+
+[node name="screenHeightDropdown" type="OptionButton" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/screenHeight"]
+margin_left = 234.0
+margin_right = 354.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 20 )
+text = "1080p"
+items = [ "2160p", null, false, 4, null, "1440p", null, false, 1, null, "1080p", null, false, 2, null, "900p", null, false, 3, null, "720p", null, false, 4, null ]
+selected = 2
+
+[node name="aspectRatio" type="HBoxContainer" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 374.0
+margin_bottom = 40.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/aspectRatio"]
+margin_right = 230.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 230, 20 )
+text = "aspect ratio:"
+
+[node name="aspectRatioDropdown" type="OptionButton" parent="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/aspectRatio"]
+margin_left = 234.0
+margin_right = 354.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 20 )
+text = "16:9"
+items = [ "16:9", null, false, 4, null, "16:10", null, false, 1, null, "4:3", null, false, 2, null, "21:9", null, false, 3, null, "32:9", null, false, 4, null ]
+selected = 0
+
+[node name="fullscreen" type="HBoxContainer" parent="ColorRect/settings/graphicsSection/graphicsOptions"]
+margin_top = 106.0
+margin_right = 400.0
+margin_bottom = 126.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/settings/graphicsSection/graphicsOptions/fullscreen"]
+margin_right = 250.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 250, 20 )
+text = "full screen:"
+
+[node name="fullScreenDropdown" type="OptionButton" parent="ColorRect/settings/graphicsSection/graphicsOptions/fullscreen"]
+margin_left = 254.0
+margin_right = 374.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 20 )
+text = "enabled"
+items = [ "disabled", null, false, 0, null, "enabled", null, false, 1, null ]
+selected = 1
+
+[node name="vsync" type="HBoxContainer" parent="ColorRect/settings/graphicsSection/graphicsOptions"]
+margin_top = 130.0
+margin_right = 400.0
+margin_bottom = 150.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/settings/graphicsSection/graphicsOptions/vsync"]
+margin_right = 250.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 250, 20 )
+text = "vsync:"
+
+[node name="vsyncDropdown" type="OptionButton" parent="ColorRect/settings/graphicsSection/graphicsOptions/vsync"]
+margin_left = 254.0
+margin_right = 374.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 20 )
+text = "enabled"
+items = [ "disabled", null, false, 0, null, "enabled", null, false, 1, null ]
+selected = 1
+
+[node name="accessibilitySection" type="ColorRect" parent="ColorRect/settings"]
+margin_left = 10.0
+margin_top = 250.0
+margin_right = 470.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.247116, 0.256952, 0.308594, 1 )
+
+[node name="label" type="Label" parent="ColorRect/settings/accessibilitySection"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 450.0
+margin_bottom = 24.0
+text = "Accessibility"
+
+[node name="fontOverride" type="HBoxContainer" parent="ColorRect/settings/accessibilitySection"]
+margin_left = 10.0
+margin_top = 140.0
+margin_right = 410.0
+margin_bottom = 160.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect/settings/accessibilitySection/fontOverride"]
+margin_right = 250.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 250, 20 )
+text = "font override:"
+
+[node name="fontOverrideDropdown" type="OptionButton" parent="ColorRect/settings/accessibilitySection/fontOverride"]
+margin_left = 254.0
+margin_right = 374.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 120, 20 )
+text = "enabled"
+items = [ "disabled", null, false, 0, null, "enabled", null, false, 1, null ]
+selected = 1
+
+[connection signal="button_down" from="ColorRect/close" to="ColorRect/close" method="_on_close"]
+[connection signal="item_selected" from="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/screenHeight/screenHeightDropdown" to="." method="handleScreenSizeChange"]
+[connection signal="item_selected" from="ColorRect/settings/graphicsSection/graphicsOptions/resolution/control/aspectRatio/aspectRatioDropdown" to="." method="handleScreenSizeChange"]
+[connection signal="item_selected" from="ColorRect/settings/graphicsSection/graphicsOptions/fullscreen/fullScreenDropdown" to="." method="_on_fullScreenDropdown_item_selected"]
+[connection signal="item_selected" from="ColorRect/settings/graphicsSection/graphicsOptions/vsync/vsyncDropdown" to="." method="_on_vsync_Dropdown_item_selected"]
+[connection signal="item_selected" from="ColorRect/settings/accessibilitySection/fontOverride/fontOverrideDropdown" to="." method="_on_fontOverrideDropdown_item_selected"]

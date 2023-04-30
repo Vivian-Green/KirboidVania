@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/camera.gd" type="Script" id=2]
+[ext_resource path="res://scenes/!debug/debugStats.tscn" type="PackedScene" id=3]
+
+[node name="camera2D" type="Camera2D"]
+current = true
+script = ExtResource( 2 )
+
+[node name="debugStats" parent="." instance=ExtResource( 3 )]
+position = Vector2( -495, -276 )

@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/scripts/titleScreen/titleScreen.gd" type="Script" id=1]
+[ext_resource path="res://assets/scripts/titleScreen/titleCameraScale.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/titleScreen.png" type="Texture" id=3]
+[ext_resource path="res://assets/fonts/Hack-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+outline_size = 1
+outline_color = Color( 0.592157, 0.592157, 0.592157, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[node name="titleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_scale = Vector2( 0.667, 0.667 )
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+script = ExtResource( 2 )
+
+[node name="close" type="Button" parent="."]
+margin_left = 1199.0
+margin_top = 23.0
+margin_right = 1247.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 48, 48 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "x"
+
+[node name="buttons" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 265.0
+margin_right = 120.0
+margin_bottom = 615.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+
+[node name="Control2" type="Control" parent="buttons"]
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="saves" type="Button" parent="buttons/Control2"]
+margin_right = 480.0
+margin_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "saves"
+
+[node name="Control3" type="Control" parent="buttons"]
+margin_top = 88.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="button 3" type="Button" parent="buttons/Control3"]
+margin_right = 480.0
+margin_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "[does nothing]"
+
+[node name="Control" type="Control" parent="buttons"]
+margin_top = 177.0
+margin_bottom = 177.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="settings" type="Button" parent="buttons/Control"]
+margin_right = 480.0
+margin_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "settings"
+
+[node name="Control4" type="Control" parent="buttons"]
+margin_top = 265.0
+margin_bottom = 265.0
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="credits" type="Button" parent="buttons/Control4"]
+margin_right = 480.0
+margin_bottom = 75.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "credits"
+
+[connection signal="button_down" from="close" to="." method="_on_quit_button_down"]
+[connection signal="button_down" from="buttons/Control2/saves" to="." method="createWindow" binds= [ "saveSelect" ]]
+[connection signal="button_down" from="buttons/Control/settings" to="." method="createWindow" binds= [ "settings" ]]
+[connection signal="button_down" from="buttons/Control4/credits" to="." method="createWindow" binds= [ "credits" ]]
